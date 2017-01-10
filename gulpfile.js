@@ -6,6 +6,7 @@ var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
 var buffer = require('gulp-buffer');
 var uglify = require('gulp-uglify');
+var stripDebug = require('gulp-strip-debug');
 var gulpif = require('gulp-if');
 var exorcist = require('exorcist');
 var babelify = require('babelify');
@@ -124,6 +125,7 @@ function build() {
         .pipe(gulpif(!isProduction(), exorcist(sourcemapPath)))
         .pipe(source(OUTPUT_FILE))
         .pipe(buffer())
+        .pipe(gulpif(isProduction(), stripDebug()))
         .pipe(gulpif(isProduction(), uglify()))
         .pipe(gulp.dest(SCRIPTS_PATH));
 
@@ -137,7 +139,10 @@ function serve() {
 
     var options = {
         server: {
-            baseDir: BUILD_PATH
+            baseDir: BUILD_PATH,
+            routes:  {
+              '/browser-sync-client-transition': './node_modules/browser-sync-client-transition/'
+            }
         },
         snippetOptions: {
           rule: {
