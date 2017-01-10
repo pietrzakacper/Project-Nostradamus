@@ -2106,13 +2106,20 @@ var Game = function (_Phaser$State) {
     value: function create() {
       this.map = new _TileMap2.default(this.game, 'map', 64, 64);
 
-      this.player = new _Player2.default(this.game, _TileMapConstants.TILE_WIDTH + _TileMapConstants.TILE_WIDTH / 2, _TileMapConstants.TILE_HEIGHT + _TileMapConstants.TILE_HEIGHT / 2, 'player', _PlayerConstants.PLAYER_INITIAL_FRAME);
+      this.player = new _Player2.default(this.game, 8 * _TileMapConstants.TILE_WIDTH + _TileMapConstants.TILE_WIDTH / 2, 6 * _TileMapConstants.TILE_HEIGHT + _TileMapConstants.TILE_HEIGHT / 2, 'player', _PlayerConstants.PLAYER_INITIAL_FRAME);
       this.game.camera.follow(this.player);
 
       this.zombies = new _WalkingEntitiesManager2.default(this.game, this.map.getWallsPostions());
       this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 2, y: 4 }, { x: 6, y: 4 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 1, y: 6 }, { x: 7, y: 6 }], this.map.getWallsPostions()));
       this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 4, y: 2 }, { x: 4, y: 6 }], this.map.getWallsPostions()));
       this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 2, y: 2 }, { x: 7, y: 7 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 2, y: 1 }, { x: 2, y: 7 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 2, y: 7 }, { x: 7, y: 1 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 1, y: 2 }, { x: 7, y: 2 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 7, y: 2 }, { x: 6, y: 6 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 1, y: 1 }, { x: 7, y: 1 }], this.map.getWallsPostions()));
+      this.zombies.add(new _Zombie2.default(this.game, 'zombie', _PlayerConstants.PLAYER_INITIAL_FRAME, [{ x: 2, y: 6 }, { x: 5, y: 6 }], this.map.getWallsPostions()));
     }
   }, {
     key: 'update',
